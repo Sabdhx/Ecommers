@@ -1,10 +1,8 @@
-
-
 import { Fragment, useState } from 'react'
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
-import Material from './Material'
+import Product from './Product'
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -13,20 +11,15 @@ const sortOptions = [
   { name: 'Price: Low to High', href: '#', current: false },
   { name: 'Price: High to Low', href: '#', current: false },
 ]
-
+const subCategories = [
+  { name: 'Totes', href: '#' },
+  { name: 'Backpacks', href: '#' },
+  { name: 'Travel Bags', href: '#' },
+  { name: 'Hip Bags', href: '#' },
+  { name: 'Laptop Sleeves', href: '#' },
+]
 const filters = [
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White', checked: false },
-      { value: 'beige', label: 'Beige', checked: false },
-      { value: 'blue', label: 'Blue', checked: true },
-      { value: 'brown', label: 'Brown', checked: false },
-      { value: 'green', label: 'Green', checked: false },
-      { value: 'purple', label: 'Purple', checked: false },
-    ],
-  },
+ 
   {
     id: 'category',
     name: 'Category',
@@ -38,29 +31,17 @@ const filters = [
       { value: 'accessories', label: 'Accessories', checked: false },
     ],
   },
-  {
-    id: 'size',
-    name: 'Size',
-    options: [
-      { value: '2l', label: '2L', checked: false },
-      { value: '6l', label: '6L', checked: false },
-      { value: '12l', label: '12L', checked: false },
-      { value: '18l', label: '18L', checked: false },
-      { value: '20l', label: '20L', checked: false },
-      { value: '40l', label: '40L', checked: true },
-    ],
-  },
+ 
 ]
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
- function Example() {
+export default function MainPage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
 
   return (
-    <>
     <div className="bg-white">
       <div>
         {/* Mobile filter dialog */}
@@ -103,8 +84,7 @@ function classNames(...classes) {
 
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
-                    <h3 className="sr-only">Categories</h3>
-                    
+                 
 
                     {filters.map((section) => (
                       <Disclosure as="div" key={section.id} className="border-t border-gray-200 px-4 py-6">
@@ -274,16 +254,11 @@ function classNames(...classes) {
               </form>
 
               {/* Product grid */}
-              <div className="lg:col-span-3">
-                {<Material/>}
-                </div>
+              <div className="lg:col-span-3">{<Product/>}</div>
             </div>
           </section>
         </main>
       </div>
     </div>
-    </>
-
-              )
-            }
-export default Example;
+  )
+}

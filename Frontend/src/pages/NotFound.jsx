@@ -1,4 +1,4 @@
-export default function Error404() {
+export default function NotFound() {
   return (
     <>
       {/*

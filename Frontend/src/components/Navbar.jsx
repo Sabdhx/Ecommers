@@ -2,13 +2,11 @@ import { Fragment } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
-
+import { useDispatch, useSelector } from 'react-redux'
 
 const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
+  {id:1, name: 'Dashboard', href: '#', current: true },
+
 ]
 
 function classNames(...classes) {
@@ -16,6 +14,9 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const dispatch = useDispatch()
+  const selector = useSelector((state)=>state.counter.cart)
+        console.log(selector.length);
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -35,18 +36,18 @@ export default function Navbar() {
                 </Disclosure.Button>
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-                <Link to={"/"} className="flex flex-shrink-0 items-center">
+                <div className="flex flex-shrink-0 items-center">
                   <img
                     className="h-8 w-auto"
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
                     alt="Your Company"
                   />
-                </Link>
+                </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <a
-                        key={item.name}
+                        key={item.id}
                         href={item.href}
                         className={classNames(
                           item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -61,14 +62,20 @@ export default function Navbar() {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <button
-                  type="button"
+                <Link to={'/CartPage'}             
+                 
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
                   <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                {selector.length}
+
+              
+        
+
+
+                </Link>
 
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
@@ -134,7 +141,7 @@ export default function Navbar() {
             <div className="space-y-1 px-2 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
-                  key={item.name}
+                  key={item.id}
                   as="a"
                   href={item.href}
                   className={classNames(
