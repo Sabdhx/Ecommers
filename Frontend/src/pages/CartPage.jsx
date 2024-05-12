@@ -38,7 +38,7 @@ export default function CartPage() {
               <li key={product.id} className="flex py-6">
                 <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                   <img
-                    src={product.image}
+                    src={product.images[1]}
                     alt={product.title}
                     className="h-full w-full object-cover object-center"
                   />
@@ -109,7 +109,7 @@ export default function CartPage() {
         </p>
         <div className="mt-6">
           <Link
-            to="/checkout"
+            to="/"
             className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
           >
             Checkout

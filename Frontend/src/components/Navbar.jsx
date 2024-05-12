@@ -1,8 +1,11 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { fetchingSearchApi,fetchingApi } from '../features/products/productSlice'
+
+
 
 const navigation = [
   {id:1, name: 'Dashboard', href: '#', current: true },
@@ -14,9 +17,28 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const [input,setInput]=useState("")
   const dispatch = useDispatch()
   const selector = useSelector((state)=>state.counter.cart)
         console.log(selector.length);
+
+   const handleInput =(e)=>{
+    const value = e.target.value
+    setInput(value)
+ setTimeout(() => {
+  if(input.length<=0){
+
+    dispatch(fetchingApi())
+  }else{
+    dispatch(fetchingSearchApi(value))
+  }
+ }, 2000);
+  
+
+    
+   }
+       
+        
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -60,6 +82,7 @@ export default function Navbar() {
                     ))}
                   </div>
                 </div>
+               
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <Link to={'/CartPage'}             
@@ -76,7 +99,7 @@ export default function Navbar() {
 
 
                 </Link>
-
+                <input type="text" className='h-6' onChange={(e)=>handleInput(e)} />
                 {/* Profile dropdown */}
                 <Menu as="div" className="relative ml-3">
                   <div>
