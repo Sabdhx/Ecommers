@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Fragment, useEffect, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -61,16 +62,64 @@ export default function MainPage() {
     newFilter[e.target.name] = e.target.value;
     setFilter(newFilter);
   };
+=======
+import { Fragment, useState } from 'react'
+import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/24/outline'
+import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from '@heroicons/react/20/solid'
+import Product from './Product'
+
+const sortOptions = [
+  { name: 'Most Popular', href: '#', current: true },
+  { name: 'Best Rating', href: '#', current: false },
+  { name: 'Newest', href: '#', current: false },
+  { name: 'Price: Low to High', href: '#', current: false },
+  { name: 'Price: High to Low', href: '#', current: false },
+]
+const subCategories = [
+  { name: 'Totes', href: '#' },
+  { name: 'Backpacks', href: '#' },
+  { name: 'Travel Bags', href: '#' },
+  { name: 'Hip Bags', href: '#' },
+  { name: 'Laptop Sleeves', href: '#' },
+]
+const filters = [
+ 
+  {
+    id: 'category',
+    name: 'Category',
+    options: [
+      { value: 'new-arrivals', label: 'New Arrivals', checked: false },
+      { value: 'sale', label: 'Sale', checked: false },
+      { value: 'travel', label: 'Travel', checked: true },
+      { value: 'organization', label: 'Organization', checked: false },
+      { value: 'accessories', label: 'Accessories', checked: false },
+    ],
+  },
+ 
+]
+
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
+
+export default function MainPage() {
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
 
   return (
     <div className="bg-white">
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
+<<<<<<< HEAD
           <Dialog
             className="relative z-40 lg:hidden"
             onClose={setMobileFiltersOpen}
           >
+=======
+          <Dialog className="relative z-40 lg:hidden" onClose={setMobileFiltersOpen}>
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -95,9 +144,13 @@ export default function MainPage() {
               >
                 <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
                   <div className="flex items-center justify-between px-4">
+<<<<<<< HEAD
                     <h2 className="text-lg font-medium text-gray-900">
                       Filters
                     </h2>
+=======
+                    <h2 className="text-lg font-medium text-gray-900">Filters</h2>
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                     <button
                       type="button"
                       className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
@@ -110,16 +163,24 @@ export default function MainPage() {
 
                   {/* Filters */}
                   <form className="mt-4 border-t border-gray-200">
+<<<<<<< HEAD
                     {filters.map((section) => (
                       <Disclosure
                         as="div"
                         key={section.id}
                         className="border-t border-gray-200 px-4 py-6"
                       >
+=======
+                 
+
+                    {filters.map((section) => (
+                      <Disclosure as="div" key={section.id} className="border-t border-gray-200 px-4 py-6">
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                         {({ open }) => (
                           <>
                             <h3 className="-mx-2 -my-3 flow-root">
                               <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
+<<<<<<< HEAD
                                 <span className="font-medium text-gray-900">
                                   {section.name}
                                 </span>
@@ -134,6 +195,14 @@ export default function MainPage() {
                                       className="h-5 w-5"
                                       aria-hidden="true"
                                     />
+=======
+                                <span className="font-medium text-gray-900">{section.name}</span>
+                                <span className="ml-6 flex items-center">
+                                  {open ? (
+                                    <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                                  ) : (
+                                    <PlusIcon className="h-5 w-5" aria-hidden="true" />
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                                   )}
                                 </span>
                               </Disclosure.Button>
@@ -141,6 +210,7 @@ export default function MainPage() {
                             <Disclosure.Panel className="pt-6">
                               <div className="space-y-6">
                                 {section.options.map((option, optionIdx) => (
+<<<<<<< HEAD
                                   <div
                                     key={option.value}
                                     className="flex items-center"
@@ -149,6 +219,12 @@ export default function MainPage() {
                                       id={`filter-mobile-${section.id}-${optionIdx}`}
                                       onClick={(e)=>handleFilter(e)}
                                       name={`${section.id}`}
+=======
+                                  <div key={option.value} className="flex items-center">
+                                    <input
+                                      id={`filter-mobile-${section.id}-${optionIdx}`}
+                                      name={`${section.id}[]`}
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                                       defaultValue={option.value}
                                       type="checkbox"
                                       defaultChecked={option.checked}
@@ -177,9 +253,13 @@ export default function MainPage() {
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+<<<<<<< HEAD
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               New Arrivals
             </h1>
+=======
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900">New Arrivals</h1>
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
@@ -210,11 +290,17 @@ export default function MainPage() {
                             <a
                               href={option.href}
                               className={classNames(
+<<<<<<< HEAD
                                 option.current
                                   ? "font-medium text-gray-900"
                                   : "text-gray-500",
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm"
+=======
+                                option.current ? 'font-medium text-gray-900' : 'text-gray-500',
+                                active ? 'bg-gray-100' : '',
+                                'block px-4 py-2 text-sm'
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                               )}
                             >
                               {option.name}
@@ -227,10 +313,14 @@ export default function MainPage() {
                 </Transition>
               </Menu>
 
+<<<<<<< HEAD
               <button
                 type="button"
                 className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
               >
+=======
+              <button type="button" className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7">
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                 <span className="sr-only">View grid</span>
                 <Squares2X2Icon className="h-5 w-5" aria-hidden="true" />
               </button>
@@ -254,6 +344,7 @@ export default function MainPage() {
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
+<<<<<<< HEAD
 
                 {filters.map((section) => (
                   <Disclosure
@@ -261,10 +352,17 @@ export default function MainPage() {
                     key={section.id}
                     className="border-b border-gray-200 py-6"
                   >
+=======
+              
+
+                {filters.map((section) => (
+                  <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                     {({ open }) => (
                       <>
                         <h3 className="-my-3 flow-root">
                           <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
+<<<<<<< HEAD
                             <span className="font-medium text-gray-900">
                               {section.name}
                             </span>
@@ -279,6 +377,14 @@ export default function MainPage() {
                                   className="h-5 w-5"
                                   aria-hidden="true"
                                 />
+=======
+                            <span className="font-medium text-gray-900">{section.name}</span>
+                            <span className="ml-6 flex items-center">
+                              {open ? (
+                                <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                              ) : (
+                                <PlusIcon className="h-5 w-5" aria-hidden="true" />
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                               )}
                             </span>
                           </Disclosure.Button>
@@ -286,6 +392,7 @@ export default function MainPage() {
                         <Disclosure.Panel className="pt-6">
                           <div className="space-y-4">
                             {section.options.map((option, optionIdx) => (
+<<<<<<< HEAD
                               <div
                                 key={option.value}
                                 className="flex items-center"
@@ -294,13 +401,22 @@ export default function MainPage() {
                                   id={`filter-${section.id}-${optionIdx}`}
                                   onClick={(e) => {handleFilter(e)}}
                                   name={`${section.id}`}
+=======
+                              <div key={option.value} className="flex items-center">
+                                <input
+                                  id={`filter-${section.id}-${optionIdx}`}
+                                  name={`${section.id}[]`}
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                                   defaultValue={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label
+<<<<<<< HEAD
                                   value={section.value}
+=======
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
                                   htmlFor={`filter-${section.id}-${optionIdx}`}
                                   className="ml-3 text-sm text-gray-600"
                                 >
@@ -317,11 +433,20 @@ export default function MainPage() {
               </form>
 
               {/* Product grid */}
+<<<<<<< HEAD
               <div className="lg:col-span-3">{<Product />}</div>
+=======
+              <div className="lg:col-span-3">{<Product/>}</div>
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
             </div>
           </section>
         </main>
       </div>
     </div>
+<<<<<<< HEAD
   );
 }
+=======
+  )
+}
+>>>>>>> 3fe3898711fcbec4c1b856119796b61aa5457a82
