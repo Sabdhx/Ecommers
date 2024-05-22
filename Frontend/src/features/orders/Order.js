@@ -12,7 +12,7 @@ export const createOrder = createAsyncThunk(
   "order/createOrder",
   async (order) => {
     try {
-      const response = await axios.post("http://localhost:4000/orders",order)   
+      const response = await axios.post("http://localhost:3000/orders",order)   
       console.log(response.data);     
       return response.data;
 
